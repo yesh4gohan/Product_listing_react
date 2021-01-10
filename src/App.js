@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React from 'react';
+import ProductsList from './components/ProductsList'
+import SearchComponent from './components/SearchBar'
+import ScrollTop from './components/ScrollTop'
+import Header from './components/Header'
 function App() {
+  const [searchResults,setSearchResults] = React.useState([]);
+  const [searchSuccess,setSearchSuccess] = React.useState(true);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <SearchComponent searchSuccess={searchSuccess} setSearchSuccess = {setSearchSuccess} searchResults = {searchResults} setSearchResults={setSearchResults}/>
+      <ProductsList searchSuccess={searchSuccess} setSearchSuccess = {setSearchSuccess} searchResults = {searchResults} setSearchResults={setSearchResults}/>
+      <ScrollTop/>
     </div>
   );
 }
